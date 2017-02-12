@@ -35,7 +35,7 @@
             android:name=".MyReceiver"
             android:exported="false" >
             <intent-filter>
-                <action android:name="org.tcellgy.intent.TITRESIM_INTENT" />
+                <action android:name="myBroadcast" />
             </intent-filter>
         </receiver>
     </application>

@@ -1,32 +1,22 @@
 package com.example.ibrhm.getinfo;
 
 import android.app.Service;
-import android.content.Context;
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.IBinder;
-import android.util.Log;
-import android.widget.ArrayAdapter;
-import android.widget.Toast;
-
-import org.apache.http.HttpEntity;
-import org.apache.http.HttpResponse;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.entity.StringEntity;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.util.ArrayList;
+import android.support.annotation.Nullable;
 
 public class Services extends Service{
-  int MaingetInfoId;
+    @Nullable
+    @Override
+    public IBinder onBind(Intent intent) {
+        return null;
+    }
+ /* int MaingetInfoId;
     int x=0;
+    int DIS=123;
+    Databeses databeses;
+    DBOperations dbOperations=new DBOperations();
+    Values values=new Values();
     JSONObject jsonObject;
     JSONObject JObject=new JSONObject();
     private static final String url = "http://denemesitesidirdbyeni.co.nf/uyeler.php";
@@ -45,10 +35,6 @@ public class Services extends Service{
     public int onStartCommand(Intent intent, int flags, int startId) {
         getInformation=new GetInformation(url,JObject);
         getInformation.getJSONFromUrl();
-
-        if(MaingetInfoId==58  ){
-
-        }
         onTaskRemoved(intent);
 
          return START_STICKY;
@@ -75,6 +61,7 @@ public class Services extends Service{
         private JSONObject jsonObjSend;
         Context context;
         int id=48;
+
         Display display;
         String  resultString;
         ArrayList<String> uyeler;
@@ -151,12 +138,15 @@ public class Services extends Service{
                 for (i=0;i<x;i++){
 
                      jsonObject = result.getJSONObject(0).getJSONObject(String.valueOf(i));
-                    if(jsonObject.getInt("no")==58){
-                        MaingetInfoId=jsonObject.getInt("no");
-                        Toast.makeText(getApplicationContext(),"no:"+jsonObject.getString("name"),Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent();
-                        intent.setAction("org.tcellgy.intent.TITRESIM_INTENT");
-                        sendBroadcast(intent);
+                    databeses=new Databeses(Services.this);
+                   Boolean resultt=dbOperations.display(jsonObject.getString("date"),databeses);
+                    if(jsonObject.getInt("no")==DIS && resultt==false){
+                        values.setNo(jsonObject.getInt("no"));
+                        values.setName(jsonObject.getString("name"));
+                        values.setDate(jsonObject.getString("date"));
+                        dbOperations.dBUpdate(databeses,1,values.getDate());
+                        Toast.makeText(getApplicationContext(),"name"+values.getName(),Toast.LENGTH_LONG).show();
+
                     }
 
                 }
@@ -190,5 +180,8 @@ public class Services extends Service{
             return sb.toString();
         }
     }
-
+*/
 }
+/*  Intent intent = new Intent();
+                        intent.setAction("org.tcellgy.intent.TITRESIM_INTENT");
+                        sendBroadcast(intent);*/

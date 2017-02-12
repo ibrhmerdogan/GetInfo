@@ -24,12 +24,16 @@ public class MainActivity extends Activity {
     JSONObject jRegister;
     GetInformation getInformation;
     ArrayAdapter<String> arrayAdapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         getInfo=(Button)findViewById(R.id.button);
         getId=(EditText)findViewById(R.id.editText);
+        Intent intent = new Intent();
+        intent.setAction("myBroadcast");
+        sendBroadcast(intent);
         jRegister = new JSONObject();
 
               MainActivity.this.startService(new Intent(MainActivity.this.getApplicationContext(),Services.class));
